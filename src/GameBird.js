@@ -3,8 +3,11 @@ define(function(require, exports, module) {
       Good = require('./Good'),
       Tween = require('./Tween'),
       Timer = require('./Timer');
+  /**
+   * @overview API for users
+   */
   var GameBird = {
-    stages : [],
+    stages : [],         //queue of game scene
     
     createStage : function(opt){
       var stage = new Stage(opt);
@@ -21,12 +24,10 @@ define(function(require, exports, module) {
       var timer = new Timer(interval);
       return timer;
     },
-  
-    
+    //todo
     switchStage : function(id){
       
     },
-    
     Tween : Tween
   };
   module.exports = GameBird;

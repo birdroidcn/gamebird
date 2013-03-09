@@ -2,11 +2,21 @@ define(function(require, exports, module){
   var util = require('./utils'),
       Matrix = require('./Matrix'),
       EventDispatcher = require('./EventDispatcher');
-      
-  var Good = function(opt){
-    util.extend(this,opt);          
+  /**
+   * @overview good is the element of stage,can be add  event(collide,click event)
+   * @param {Object} arg
+   * {
+   *    id : 'test',
+   *    transform : {a:1,b:0,c:0,d:1,e:200,f:100},  initial matrix
+   *    rotate : {deg:0,x:0,y:0},
+   *    rect : {w:50,h:50},
+   *    color : '#ff0'
+   * }
+   */
+  var Good = function(arg){
+    util.extend(this,arg);
   };
-  
+  //prototype chain
   Good.prototype = new EventDispatcher();
   Good.prototype.getMatrix = function(){
       var matrix = new Matrix(this.transform);

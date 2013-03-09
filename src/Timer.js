@@ -1,5 +1,7 @@
 define(function(require, exports, module){
-
+  /**
+   *@overview Timer class ,control refresh frequency of canvas
+   */
   var Timer =  function(interval){
   this.interval = interval || 50;
   this.paused = false;  

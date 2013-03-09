@@ -1,6 +1,16 @@
 define(function(require, exports, module){
   var util = require('./utils');
-
+  /**
+   * @overview   Class of Tween
+   * @param {Oject} args
+   * { obj:good.transform,
+   *   delta: {e: 50},
+   *   delay : 0,
+   *   duration : 500,
+   *   loop : false,
+   *   run : false
+   * }
+   */
   var Tween = function(args){
     this.tweens = [];
     this._index = 0;
@@ -57,7 +67,7 @@ define(function(require, exports, module){
         this._stepValue();
       }
     },
-    
+
     to : function(args){
       this.tweens.push(args);
       return this;

@@ -1,5 +1,7 @@
 define(function(require, exports, module){
-
+/**
+ * @overview class of eventdispatcher
+ */
 var EventDispatcher = function()
 {
   
