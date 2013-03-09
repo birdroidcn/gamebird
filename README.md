@@ -1,4 +1,4 @@
-gamebird
+GameBird
 ========
 a mini hmt5  game framework(to be continued)
 # example
@@ -7,9 +7,8 @@ define(function(require, exports, module){
   var GameBird = require('./GameBird'),
 
   var container = document.getElementById('game'),
-      stage = GameBird.createStage({
+      stage = GameBird.createStage(container,{
                 id : 'test',
-                container : container ,
                 background : {src : 'background.jpg'},
                 width : 524,
                 height : 304
