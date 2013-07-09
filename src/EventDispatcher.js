@@ -1,7 +1,5 @@
 define(function(require, exports, module){
-/**
- * @overview class of eventdispatcher
- */
+
 var EventDispatcher = function()
 {
   
@@ -20,7 +18,12 @@ EventDispatcher.prototype.bind = function(type, listener)
     }
     return false;
 };
+EventDispatcher.prototype.isBindType = function(type){
+    if(!this._eventMap) this._eventMap = {};
 
+    var map = this._eventMap[type];
+    return map == null ? false : true;
+};
 
 EventDispatcher.prototype.unbind = function(type, listener)
 {
