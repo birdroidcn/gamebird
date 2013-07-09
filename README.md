@@ -34,11 +34,13 @@ define(function(require, exports, module){
                                ease : 'Quadratic.EaseIn'
                 }),
 
-  good.on('click',function(){
+  good.bind('collide',function(){
     console.log(1);
     });
+  clone = util.cloneObj(good);
+  clone.transform  = {a:1,b:0,c:0,d:1,e:400,f:100};
   stage.add(good);
-
+  stage.add(clone);
   timer = GameBird.createTimer(1000/60);
   timer.addListener(stage);
   timer.addListener(jump);
