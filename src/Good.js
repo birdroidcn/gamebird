@@ -2,21 +2,11 @@ define(function(require, exports, module){
   var util = require('./utils'),
       Matrix = require('./Matrix'),
       EventDispatcher = require('./EventDispatcher');
-  /**
-   * @overview good is the element of stage,can be add  event(collide,click event)
-   * @param {Object} arg
-   * {
-   *    id : 'test',
-   *    transform : {a:1,b:0,c:0,d:1,e:200,f:100},  initial matrix
-   *    rotate : {deg:0,x:0,y:0},
-   *    rect : {w:50,h:50},
-   *    color : '#ff0'
-   * }
-   */
-  var Good = function(arg){
-    util.extend(this,arg);
+      
+  var Good = function(opt){
+    util.extend(this,opt);          
   };
-  //prototype chain
+  
   Good.prototype = new EventDispatcher();
   Good.prototype.getMatrix = function(){
       var matrix = new Matrix(this.transform);
@@ -31,10 +21,10 @@ define(function(require, exports, module){
     
   Good.prototype.getBounds = function(){
     
-    var w = this.width, h = this.height;
-    var mtx = this.getConcatenatedMatrix();
+    var w = this.rect.w, h = this.rect.h;
+    var mtx = this.getMatrix();
     
-    var poly = this.polyArea || [{x:0, y:0}, {x:w, y:0}, {x:w, y:h}, {x:0, y:h}];
+    var poly = [{x:0, y:0}, {x:w, y:0}, {x:w, y:h}, {x:0, y:h}];
     
     var vertexs = [], len = poly.length, v, minX, maxX, minY, maxY; 
     v = mtx.transformPoint(poly[0], true, true);
@@ -52,10 +42,10 @@ define(function(require, exports, module){
       vertexs[i] = v;
     }
     
-    vertexs.x = minX;
-    vertexs.y = minY;
-    vertexs.width = maxX - minX;
-    vertexs.height = maxY - minY;
+    vertexs.minX = minX;
+    vertexs.minY = minY;
+    vertexs.maxX = maxX;
+    vertexs.maxY = maxY;
     return vertexs;
   };
 
